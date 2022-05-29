@@ -30,5 +30,6 @@ android {
 }
 
 dependencies {
-    api project(":core_android")
+    api project(':core__android')
 }
+
