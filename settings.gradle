@@ -1,0 +1,9 @@
+rootProject.name = "SeniorProject"
+include ':app'
+include ':core'
+include ':core_android'
+include ':core_api'
+include ':core_serialization'
+include ':feature__cinema_list'
+include ':feature__cinema_info'
+include ':base__cinema'

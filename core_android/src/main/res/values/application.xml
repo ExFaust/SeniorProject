@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Application.BaseMaterialComponentsTheme" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:colorEdgeEffect">#33A2A9B1</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <style name="Application.CircularProgress" parent="Widget.MaterialComponents.CircularProgressIndicator">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:indeterminate">true</item>
+    </style>
+
+    <string name="application___error__no_internet_connection">Нет соединения с интернетом</string>
+    <string name="application___error__common">Произошла ошибка</string>
+
+    <color name="white">#FFFFFF</color>
+
+    <dimen name="application___dimen__x0">0dp</dimen>
+    <dimen name="application___dimen__x1">4dp</dimen>
+    <dimen name="application___dimen__x2">8dp</dimen>
+    <dimen name="application___dimen__x3">12dp</dimen>
+    <dimen name="application___dimen__x4">16dp</dimen>
+    <dimen name="application___dimen__x5">20dp</dimen>
+    <dimen name="application___dimen__x6">24dp</dimen>
+    <dimen name="application___dimen__x7">28dp</dimen>
+    <dimen name="application___dimen__x8">32dp</dimen>
+    <dimen name="application___dimen__x9">36dp</dimen>
+    <dimen name="application___dimen__x10">40dp</dimen>
+    <dimen name="application___dimen__x11">44dp</dimen>
+    <dimen name="application___dimen__x12">48dp</dimen>
+    <dimen name="application___dimen__x13">52dp</dimen>
+    <dimen name="application___dimen__x14">56dp</dimen>
+    <dimen name="application___dimen__x15">60dp</dimen>
+    <dimen name="application___dimen__x16">64dp</dimen>
+    <dimen name="application___dimen__x17">68dp</dimen>
+    <dimen name="application___dimen__x18">72dp</dimen>
+    <dimen name="application___dimen__x19">76dp</dimen>
+    <dimen name="application___dimen__x20">80dp</dimen>
+    <dimen name="application___dimen__x21">84dp</dimen>
+    <dimen name="application___dimen__x22">88dp</dimen>
+    <dimen name="application___dimen__x23">92dp</dimen>
+    <dimen name="application___dimen__x24">96dp</dimen>
+    <dimen name="application___dimen__x25">100dp</dimen>
+</resources>

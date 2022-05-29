@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/cinema_list__all">
+
+    <fragment
+        android:id="@+id/cinema_list__all"
+        android:name="com.exfaust.feature__cinema_list.ui.all_cinemas.CinemaListAllFragment"
+        android:label="@string/cinema_list___title"
+        tools:layout="@layout/cinema_list___all"/>
+</navigation>

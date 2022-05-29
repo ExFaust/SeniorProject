@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/cinema_info__main">
+
+    <fragment
+        android:id="@+id/cinema_info__main"
+        android:name="com.exfaust.feature_cinema_info.ui.cinema_info.CinemaInfoFragment"
+        android:label=""
+        tools:layout="@layout/cinema_info___main"/>
+</navigation>
