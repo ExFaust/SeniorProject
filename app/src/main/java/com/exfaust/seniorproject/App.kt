@@ -39,7 +39,7 @@ class App : Application(), DIAware {
             )
         )
 
-        importOnce(cinemaListModule)
+        import(cinemaListModule)
         import(cinemaInfoModule)
     }
 }
