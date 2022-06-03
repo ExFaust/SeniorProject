@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -31,6 +32,7 @@ import com.exfaust.core_android.NavigateBackHandler
 import com.exfaust.core_android.R
 import com.exfaust.core_android.bundler.Bundler
 import com.exfaust.core_android.di.DependencyBuilder
+import com.exfaust.core_android.di.ViewModelFactory
 import com.exfaust.core_android.di.basicActivityModule
 import com.exfaust.core_android.di.bindNavigationFromContainer
 import com.exfaust.core_android.inflateInto
@@ -60,7 +62,10 @@ import org.kodein.di.DI
 import org.kodein.di.DIAware
 import org.kodein.di.android.closestDI
 import org.kodein.di.android.subDI
+import org.kodein.di.bind
+import org.kodein.di.direct
 import org.kodein.di.instance
+import org.kodein.di.singleton
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicReference
 import javax.annotation.CheckReturnValue
@@ -171,6 +176,8 @@ abstract class BaseActivity(
 
         if (navigationRes != null)
             bindNavigationFromContainer(this@BaseActivity, navigationRes)
+
+        bind<ViewModelProvider.Factory>() with singleton { ViewModelFactory(di.direct) }
 
         dependency(this@BaseActivity)
     }

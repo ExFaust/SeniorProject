@@ -5,8 +5,6 @@ import com.exfaust.base__cinema.CinemaParameterAdapter
 import com.exfaust.core.rx.RxUnhandledExceptionHandler
 import com.exfaust.core_android.di.commonModule
 import com.exfaust.core_api.di.apiModule
-import com.exfaust.feature__cinema_list.di.cinemaListModule
-import com.exfaust.feature_cinema_info.di.cinemaInfoModule
 import com.exfaust.seniorproject.di.basicApplicationModule
 import io.reactivex.plugins.RxJavaPlugins
 import kotlinx.collections.immutable.persistentListOf
@@ -38,8 +36,5 @@ class App : Application(), DIAware {
                 )
             )
         )
-
-        import(cinemaListModule)
-        import(cinemaInfoModule)
     }
 }
