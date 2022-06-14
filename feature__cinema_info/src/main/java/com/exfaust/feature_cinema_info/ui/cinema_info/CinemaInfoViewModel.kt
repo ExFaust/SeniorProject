@@ -15,7 +15,6 @@ class CinemaInfoViewModel(
 ) : BaseStateViewModel<CinemaInfoState, CinemaInfoAction>(CinemaInfoState.Idle) {
 
     override val actions: Flowable<Unit> = actionsSubject
-        .distinctUntilChanged()
         .doOnEach {
             Timber.e("Action:%s", it.value?.javaClass?.simpleName)
         }

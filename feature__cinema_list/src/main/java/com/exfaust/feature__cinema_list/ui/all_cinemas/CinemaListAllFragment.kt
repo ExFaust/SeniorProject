@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.exfaust.base__cinema.CinemaRouter
 import com.exfaust.core.lazyGet
@@ -15,6 +16,7 @@ import com.exfaust.core_android.common.SpacingItemDecoration
 import com.exfaust.core_android.databinding.ApplicationToolbarWhiteBinding
 import com.exfaust.core_android.di.fragmentViewModel
 import com.exfaust.core_android.dimentions.Dimension
+import com.exfaust.core_android.isShimmerAnimated
 import com.exfaust.core_android.layoutInflater
 import com.exfaust.core_android.toolbar.HasCustomToolbar
 import com.exfaust.feature__cinema_list.analytics.CinemaListAnalytics
@@ -84,15 +86,23 @@ class CinemaListAllFragment :
             .observe(viewLifecycleOwner, eventsObserver(_binding.cinemaListAllProgress))
         _viewModel.state.observe(viewLifecycleOwner) { state ->
             when (state) {
-                CinemaListAllState.Idle -> {}
-                CinemaListAllState.Start -> {
+                CinemaListAllState.Idle -> {
+                    _binding.cinemaListAll.isVisible = false
+                    _binding.cinemaListAllSkeleton.cinemaListAllSkeletonShimmer.isVisible = true
+                    _binding.cinemaListAllSkeleton.cinemaListAllSkeletonShimmer.isShimmerAnimated =
+                        true
                     _viewModel.dispatchAction(CinemaListAllAction.StartLoading)
                 }
                 is CinemaListAllState.MainState -> {
+                    _binding.cinemaListAll.isVisible = true
+                    _binding.cinemaListAllSkeleton.cinemaListAllSkeletonShimmer.isVisible = false
+                    _binding.cinemaListAllSkeleton.cinemaListAllSkeletonShimmer.isShimmerAnimated =
+                        false
                     _adapter.submitList(state.cinemas)
                 }
                 is CinemaListAllState.GoToCinemaInfoState -> {
                     _router.goToCinemaInfo(state.id, requireActivity() as BaseActivity)
+                    _viewModel.dispatchAction(CinemaListAllAction.BackToMainState(state.mainState))
                 }
             }
         }

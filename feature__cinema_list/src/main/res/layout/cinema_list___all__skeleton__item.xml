@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/application___dimen__x4"
+    android:paddingVertical="@dimen/application___dimen__x2">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@color/cardview_dark_background"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginTop="@dimen/application___dimen__x2"
+        android:background="@color/cardview_dark_background"/>
+</LinearLayout>
+

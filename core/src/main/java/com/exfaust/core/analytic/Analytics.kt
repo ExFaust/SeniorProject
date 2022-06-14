@@ -9,9 +9,4 @@ object Analytics {
         const val show = "_show_"
         const val hide = "_hide_"
     }
-
-    object Modules {
-        const val main = "main"
-        const val cinemaList = "cinema_list"
-    }
 }

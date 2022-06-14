@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cinema_list___all__skeleton__shimmer"
+    style="@style/Application.Shimmer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/application___dimen__x4">
+
+            <include layout="@layout/cinema_list___all__skeleton__item"/>
+
+            <include layout="@layout/cinema_list___all__skeleton__item"/>
+
+            <include layout="@layout/cinema_list___all__skeleton__item"/>
+
+            <include layout="@layout/cinema_list___all__skeleton__item"/>
+
+            <include layout="@layout/cinema_list___all__skeleton__item"/>
+
+            <include layout="@layout/cinema_list___all__skeleton__item"/>
+        </LinearLayout>
+    </ScrollView>
+</com.facebook.shimmer.ShimmerFrameLayout>

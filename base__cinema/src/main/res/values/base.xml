@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Application.Shimmer" parent="">
+        <item name="duration">800</item>
+        <item name="shimmer_base_alpha">1.0</item>
+        <item name="shimmer_base_color">@android:color/darker_gray</item>
+        <item name="shimmer_colored">true</item>
+        <item name="shimmer_highlight_alpha">1.0</item>
+        <item name="shimmer_highlight_color">@android:color/white</item>
+    </style>
+</resources>

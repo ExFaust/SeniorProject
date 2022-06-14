@@ -1,7 +1,7 @@
 package com.exfaust.feature_cinema_info.ui
 
 import android.os.Bundle
-import com.exfaust.core.analytic.Analytics
+import com.exfaust.base__cinema.AnalyticModules
 import com.exfaust.core_android.base.BaseActivity
 import com.exfaust.core_android.toolbar.HasCustomToolbar
 import com.exfaust.feature_cinema_info.R
@@ -12,7 +12,7 @@ import javax.annotation.CheckReturnValue
 
 class CinemaInfoActivity : BaseActivity(
     contentId = R.layout.cinema_info,
-    moduleName = Analytics.Modules.cinemaList,
+    moduleName = AnalyticModules.cinemaInfo,
     navigationRes = R.id.cinema_info___navigation_host_fragment,
     dependency = {
         import(cinemaInfoModule)

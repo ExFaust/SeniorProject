@@ -9,4 +9,8 @@ sealed class CinemaListAllAction : BaseAction {
     data class OnCinemaClick(
         val cinemaId: CinemaId
     ) : CinemaListAllAction()
+
+    data class BackToMainState(
+        val mainState: CinemaListAllState.MainState
+    ) : CinemaListAllAction()
 }

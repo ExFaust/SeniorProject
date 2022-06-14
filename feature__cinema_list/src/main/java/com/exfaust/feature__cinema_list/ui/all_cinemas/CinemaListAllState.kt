@@ -7,8 +7,6 @@ import kotlinx.collections.immutable.PersistentList
 sealed class CinemaListAllState {
     object Idle : CinemaListAllState()
 
-    object Start : CinemaListAllState()
-
     data class MainState(
         val cinemas: PersistentList<Cinema>
     ) : CinemaListAllState() {

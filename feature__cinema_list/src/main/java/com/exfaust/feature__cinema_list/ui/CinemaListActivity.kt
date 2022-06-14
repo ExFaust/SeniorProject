@@ -1,6 +1,6 @@
 package com.exfaust.feature__cinema_list.ui
 
-import com.exfaust.core.analytic.Analytics
+import com.exfaust.base__cinema.AnalyticModules
 import com.exfaust.core_android.base.BaseActivity
 import com.exfaust.core_android.toolbar.HasCustomToolbar
 import com.exfaust.feature__cinema_list.R
@@ -11,7 +11,7 @@ import javax.annotation.CheckReturnValue
 
 class CinemaListActivity : BaseActivity(
     contentId = R.layout.cinema_list,
-    moduleName = Analytics.Modules.cinemaList,
+    moduleName = AnalyticModules.cinemaList,
     navigationRes = R.id.cinema_list___navigation_host_fragment,
     dependency = {
         import(cinemaListModule)

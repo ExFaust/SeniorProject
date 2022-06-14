@@ -1,5 +1,7 @@
 package com.exfaust.feature_cinema_info.ui.cinema_info
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +23,7 @@ import com.exfaust.feature_cinema_info.analytics.CinemaInfoAnalytics
 import com.exfaust.feature_cinema_info.databinding.CinemaInfoMainBinding
 import com.google.android.material.appbar.AppBarLayout
 import io.reactivex.Flowable
-import io.reactivex.processors.PublishProcessor
+import io.reactivex.processors.BehaviorProcessor
 import org.kodein.di.instance
 import timber.log.Timber
 import javax.annotation.CheckReturnValue
@@ -35,8 +37,7 @@ class CinemaInfoFragment :
 
     private lateinit var _binding: CinemaInfoMainBinding
 
-    private val _onFinishLoading: PublishProcessor<String> = PublishProcessor.create()
-    val onFinishLoading: Flowable<String> get() = _onFinishLoading.hide()
+    private val _onFinishLoading: BehaviorProcessor<String> = BehaviorProcessor.create()
 
     @CheckReturnValue
     override fun onCreateCustomToolbar(): HasCustomToolbar.CustomToolbar =
@@ -72,7 +73,7 @@ class CinemaInfoFragment :
     }
 
     @CheckReturnValue
-    override fun onCustomToolbarChanged(): Flowable<String> = onFinishLoading
+    override fun onCustomToolbarChanged(): Flowable<String> = _onFinishLoading.hide()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -101,6 +102,9 @@ class CinemaInfoFragment :
         _viewModel.state.observe(viewLifecycleOwner) { state ->
             when (state) {
                 CinemaInfoState.Idle -> {
+                    _binding.cinemaInfoMainAddress.alpha = 0f
+                    _binding.cinemaInfoMainEmail.alpha = 0f
+                    _binding.cinemaInfoMainSite.alpha = 0f
                     _viewModel.dispatchAction(CinemaInfoAction.StartLoading(request))
                 }
                 is CinemaInfoState.MainState -> {
@@ -113,6 +117,29 @@ class CinemaInfoFragment :
                     _binding.cinemaInfoMainAddress.text = state.cinema.address
                     _binding.cinemaInfoMainEmail.text = state.cinema.email?.formatDefault()
                     _binding.cinemaInfoMainSite.text = state.cinema.site.toString()
+
+                    val addressAnimation =
+                        ObjectAnimator.ofFloat(_binding.cinemaInfoMainAddress, "alpha", 0f, 1f)
+                            .apply {
+                                duration = 1000
+                            }
+                    val siteAnimation =
+                        ObjectAnimator.ofFloat(_binding.cinemaInfoMainSite, "alpha", 0f, 1f).apply {
+                            duration = 1000
+                            startDelay = 500
+                        }
+                    val emailAnimation =
+                        ObjectAnimator.ofFloat(_binding.cinemaInfoMainEmail, "alpha", 0f, 1f)
+                            .apply {
+                                duration = 1000
+                                startDelay = 1000
+                            }
+                    AnimatorSet().apply {
+                        play(addressAnimation)
+                            .with(emailAnimation)
+                            .with(siteAnimation)
+                        start()
+                    }
                 }
             }
         }

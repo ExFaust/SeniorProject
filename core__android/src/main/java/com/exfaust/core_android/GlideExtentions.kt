@@ -2,6 +2,7 @@ package com.exfaust.core_android
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.annotation.GlideOption
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.module.AppGlideModule
 import com.bumptech.glide.request.BaseRequestOptions
 import com.bumptech.glide.request.RequestOptions
@@ -31,6 +33,10 @@ class ImagesModule : AppGlideModule() {
         builder: GlideBuilder
     ) {
         builder.setLogLevel(Log.ERROR)
+        builder.setDefaultTransitionOptions(
+            Drawable::class.java,
+            DrawableTransitionOptions.withCrossFade()
+        )
     }
 
     override fun isManifestParsingEnabled(): Boolean {

@@ -26,9 +26,6 @@ class CinemaListAllViewModel(
                     _repository.getCinemaList()
                         .subscribeOn(Schedulers.single())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .doOnSubscribe {
-                            eventListener.value = Events.Loading
-                        }
                         .onErrorReturn {
                             Timber.e(it)
                             eventListener.value = Events.Error(it)
@@ -37,9 +34,6 @@ class CinemaListAllViewModel(
                         .flatMapPublisher {
                             mutableState.setValueFlowable(CinemaListAllState.MainState(it))
                         }
-                        .doFinally {
-                            eventListener.value = Events.HideLoading
-                        }
                 }
                 is CinemaListAllAction.OnCinemaClick -> {
                     mutableState.getStateFlowable<CinemaListAllState, CinemaListAllState.MainState>()
@@ -47,11 +41,9 @@ class CinemaListAllViewModel(
                             mutableState.value = it.toCinemaInfoState(action.cinemaId)
                         }
                 }
+                is CinemaListAllAction.BackToMainState -> {
+                    mutableState.setValueFlowable(action.mainState)
+                }
             }
         }
-
-    override fun onResume() {
-        super.onResume()
-        mutableState.value = CinemaListAllState.Start
-    }
 }
