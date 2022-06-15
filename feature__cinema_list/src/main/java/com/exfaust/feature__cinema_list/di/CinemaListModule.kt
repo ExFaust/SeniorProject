@@ -14,7 +14,7 @@ import retrofit2.Retrofit
 
 val cinemaListModule = DI.Module(name = "CINEMA_LIST") {
     bind<CinemaListRepository>() with singleton {
-        CinemaListRepositoryImpl(instance())
+        CinemaListRepositoryImpl(instance(), instance())
     }
 
     bind<CinemaListApi>() with singleton {

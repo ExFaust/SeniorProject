@@ -39,7 +39,7 @@ android {
 dependencies {
     api project(":core")
     api project(':core__serialization')
-    api project(':core__api')
+    api project(':core__data')
 
     api "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
 

@@ -2,7 +2,7 @@ rootProject.name = "SeniorProject"
 include ':app'
 include ':core'
 include ':core__android'
-include ':core__api'
+include ':core__data'
 include ':core__serialization'
 include ':feature__cinema_list'
 include ':feature__cinema_info'

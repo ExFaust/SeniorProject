@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="Application.Shimmer" parent="">
         <item name="duration">800</item>
         <item name="shimmer_base_alpha">1.0</item>

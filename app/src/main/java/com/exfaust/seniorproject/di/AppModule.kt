@@ -2,15 +2,19 @@ package com.exfaust.seniorproject.di
 
 import android.app.Application
 import android.content.Context
+import androidx.room.Room
 import com.exfaust.base__cinema.CinemaId
+import com.exfaust.base__cinema.CinemaIdConverter
 import com.exfaust.base__cinema.CinemaRouter
 import com.exfaust.core_android.bundler.Bundler
 import com.exfaust.core_android.bundler.SerializationBundler
 import com.exfaust.core_api.di.ApiSerializationTag
 import com.exfaust.feature__cinema_list.data.serialization.registerCinemaListApiSerializationAdapters
 import com.exfaust.feature__cinema_list.data.serialization.registerCinemaListSerializationAdapters
+import com.exfaust.feature__cinema_list.db.CinemaListItemDao
 import com.exfaust.feature_cinema_info.data.serialization.registerCinemaInfoApiSerializationAdapters
 import com.exfaust.feature_cinema_info.data.serialization.registerCinemaInfoSerializationAdapters
+import com.exfaust.seniorproject.AppDatabase
 import com.exfaust.seniorproject.BuildConfig
 import com.exfaust.seniorproject.CinemaRouterImpl
 import com.exfaust.serialization.GsonSerializationProvider
@@ -66,5 +70,17 @@ fun basicApplicationModule(application: Application) = DI.Module("application") 
 
     bind<CinemaRouter>() with singleton {
         CinemaRouterImpl(instance())
+    }
+
+    bind<AppDatabase>() with singleton {
+        Room.databaseBuilder(instance(), AppDatabase::class.java, "database")
+            .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
+            .addTypeConverter(CinemaIdConverter())
+            .build()
+    }
+
+    bind<CinemaListItemDao>() with singleton {
+        instance<AppDatabase>().cinemaListItemDao()
     }
 }
