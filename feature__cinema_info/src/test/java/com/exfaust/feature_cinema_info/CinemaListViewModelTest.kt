@@ -19,14 +19,13 @@ import org.mockito.kotlin.whenever
 class CinemaListViewModelTest {
 
     private val _repository: CinemaInfoRepository = mock()
+    private val _uri: Uri = mock()
 
     @get:Rule
     val rxRule: ImmediateSchedulersRule = ImmediateSchedulersRule()
 
     @get:Rule
     val taskRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
-
-    private val _uri: Uri = mock()
 
     private val _viewModel = CinemaInfoViewModel(_repository)
 
