@@ -1,8 +1,8 @@
 package com.exfaust.feature__cinema_list
 
 import com.exfaust.feature__cinema_list.data.api.CinemaListApi
+import com.exfaust.feature__cinema_list.data.db.CinemaListItemDao
 import com.exfaust.feature__cinema_list.data.repository.CinemaListRepositoryImpl
-import com.exfaust.feature__cinema_list.db.CinemaListItemDao
 import io.reactivex.Completable
 import io.reactivex.Single
 import org.junit.Rule

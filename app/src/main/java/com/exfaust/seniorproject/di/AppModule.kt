@@ -9,9 +9,9 @@ import com.exfaust.base__cinema.CinemaRouter
 import com.exfaust.core_android.bundler.Bundler
 import com.exfaust.core_android.bundler.SerializationBundler
 import com.exfaust.core_api.di.ApiSerializationTag
+import com.exfaust.feature__cinema_list.data.db.CinemaListItemDao
 import com.exfaust.feature__cinema_list.data.serialization.registerCinemaListApiSerializationAdapters
 import com.exfaust.feature__cinema_list.data.serialization.registerCinemaListSerializationAdapters
-import com.exfaust.feature__cinema_list.db.CinemaListItemDao
 import com.exfaust.feature_cinema_info.data.serialization.registerCinemaInfoApiSerializationAdapters
 import com.exfaust.feature_cinema_info.data.serialization.registerCinemaInfoSerializationAdapters
 import com.exfaust.seniorproject.AppDatabase
