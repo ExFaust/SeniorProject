@@ -1,8 +1,8 @@
 package com.exfaust.feature__cinema_list.data.repository
 
 import com.exfaust.feature__cinema_list.data.api.CinemaListApi
+import com.exfaust.feature__cinema_list.data.db.CinemaListItemDao
 import com.exfaust.feature__cinema_list.data.model.Cinema
-import com.exfaust.feature__cinema_list.db.CinemaListItemDao
 import io.reactivex.Single
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.toPersistentList
