@@ -4,8 +4,22 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def properties = new Properties()
+file("otus_keystore_credentials_file.properties").withInputStream {
+    stream -> properties.load(stream)
+}
+
 android {
     compileSdk 32
+
+    signingConfigs {
+        release {
+            keyAlias properties.getProperty("KEY_ALIAS")
+            keyPassword properties.getProperty("KEY_PASSWORD")
+            storeFile file('../otus_keystore_file.jks')
+            storePassword properties.getProperty("KEYSTORE_PASSWORD")
+        }
+    }
 
     defaultConfig {
         applicationId "com.exfaust.seniorproject"
