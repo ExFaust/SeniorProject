@@ -2,27 +2,32 @@
 pipeline {
     agent {
         docker {
-            image 'exfaust/seniorproject:1.0.6'
+            image 'exfaust/seniorproject:1.0.8'
         }
     }
+    environment{
+        ANDROID_HOME = "/sdk"
+    }
     stages {
-        stage('detekt') {
+        stage("init") {
+            steps {
+                sh 'chmod 755 ./gradlew'
+                sh "chmod +x gradlew"
+                sh "./gradlew --no-daemon"
+            }
+        }
+        stage("branch") {
             steps {
                 checkout([
                         $class           : 'GitSCM',
                         branches         : [[name: '*/CI/CD_homework']],
+                        //branches         : [[name: 'release/*'], [name: 'feature/*'], [name: 'bugfix/*']],
                         extensions       : [],
                         userRemoteConfigs: [[url: 'https://github.com/ExFaust/SeniorProject.git']]
                 ])
             }
         }
-        stage("init") {
-            steps {
-                sh "chmod +x gradlew"
-                sh "./gradlew"
-            }
-        }
-        stage("lint") {
+        stage('detekt') {
             steps {
                 sh "./gradlew lintDebug"
             }
