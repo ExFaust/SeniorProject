@@ -5,17 +5,10 @@ pipeline {
             image 'exfaust/seniorproject:1.0.8'
         }
     }
-    environment{
-        ANDROID_HOME = "/sdk"
+    parameters {
+        string(name: 'branch', defaultValue: 'development', description: 'Branch to build')
     }
     stages {
-        stage("init") {
-            steps {
-                sh 'chmod 755 ./gradlew'
-                sh "chmod +x gradlew"
-                sh "./gradlew --no-daemon"
-            }
-        }
         stage("branch") {
             steps {
                 checkout([
@@ -25,6 +18,12 @@ pipeline {
                         extensions       : [],
                         userRemoteConfigs: [[url: 'https://github.com/ExFaust/SeniorProject.git']]
                 ])
+            }
+        }
+        stage("init") {
+            steps {
+                sh "chmod +x gradlew"
+                sh "./gradlew --no-daemon"
             }
         }
         stage('detekt') {
