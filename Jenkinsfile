@@ -2,7 +2,7 @@
 pipeline {
     agent {
         docker {
-            image 'exfaust/seniorproject:1.0.5'
+            image 'exfaust/seniorproject:1.0.6'
         }
     }
     stages {
@@ -10,7 +10,7 @@ pipeline {
             steps {
                 checkout([
                         $class           : 'GitSCM',
-                        branches         : [[name: '*/master']],
+                        branches         : [[name: '*/CI/CD_homework']],
                         extensions       : [],
                         userRemoteConfigs: [[url: 'https://github.com/ExFaust/SeniorProject.git']]
                 ])
