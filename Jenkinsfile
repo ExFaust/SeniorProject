@@ -13,8 +13,7 @@ pipeline {
             steps {
                 checkout([
                         $class           : 'GitSCM',
-                        branches         : [[name: '*/CI/CD_homework']],
-                        //branches         : [[name: 'release/*'], [name: 'feature/*'], [name: 'bugfix/*']],
+                        branches         : [[name: "*/${params.branch}"]],
                         extensions       : [],
                         userRemoteConfigs: [[url: 'https://github.com/ExFaust/SeniorProject.git']]
                 ])
@@ -33,12 +32,26 @@ pipeline {
         }
         stage("test") {
             steps {
-                sh "./gradlew testDebugUnitTest"
+                script {
+                    if (params.branch.contains('release/')) {
+                        sh "./gradlew testReleaseUnitTest"
+                    }
+                    else {
+                        sh "./gradlew testDebugUnitTest"
+                    }
+                }
             }
         }
         stage("build") {
             steps {
-                sh "./gradlew assembleDebug"
+                script {
+                    if (params.branch.contains('release/')) {
+                        sh "./gradlew assembleRelease"
+                    }
+                    else {
+                        sh "./gradlew assembleDebug"
+                    }
+                }
             }
         }
         stage("publish") {
